@@ -1,13 +1,13 @@
 #include<stdio.h>
 #include<ctype.h>
-void FIRST(char);
+void FIRST(char );
 int count,n=0;
-char prodn[10][10],first[10];
-main()
+char prodn[10][10], first[10];
+int main()
 {
 int i,choice;
 char c,ch;
-printf("How many productions:");
+printf("How many productions ? :");
 scanf("%d",&count);
 printf("Enter %d productions epsilon= $ :\n\n",count);
 for(i=0;i<count;i++)
@@ -30,18 +30,15 @@ while(choice==1);
 void FIRST(char c)
 {
 int j;
-if(!(isupper(c)))
-first[n++]=c;
+if(!(isupper(c)))first[n++]=c;
 for(j=0;j<count;j++)
 {
 if(prodn[j][0]==c)
 {
-if(prodn[j][3]=='$')
-first[n++]='$';
-else if(islower(prodn[j][3]))
-first[n++]=prodn[j][3];
-else
-FIRST(prodn[j][2]);
+if(prodn[j][2]=='$') first[n++]='$';
+else if(islower(prodn[j][2]))first[n++]=prodn[j][2];
+else FIRST(prodn[j][2]);
 }
 }
 }
+
